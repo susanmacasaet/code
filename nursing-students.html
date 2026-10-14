@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedMind Ex</title>
+  <style>
+    :root {
+      --primary: #2d5f6b;
+      --secondary: #4f7b5d;
+      --accent: #c97c4f;
+      --bg: #f7f9fa;
+      --text: #24343d;
+      --card: #ffffff;
+      --border: #e4eaed;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      background: #ffffff;
+      color: var(--primary);
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links a {
+      margin-left: 16px;
+      font-weight: 500;
+      color: #4d6169;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 24px 40px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+      padding: 34px 0 18px;
+    }
+
+    .hero-card, .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 2px 10px rgba(36, 52, 61, 0.05);
+      border: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin: 0 0 10px;
+      color: var(--primary);
+    }
+
+    .hero p { font-size: 1.02rem; }
+
+    .pill {
+      display: inline-block;
+      background: #eef5f3;
+      color: var(--secondary);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 0.92rem;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #f3f6f7;
+      color: var(--primary);
+    }
+
+    .hero-visual {
+      background: linear-gradient(145deg, #f8f6f2, #faf9f6);
+      text-align: center;
+      padding: 24px;
+    }
+
+    .hero-visual .icon {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    .quote-box {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--accent);
+      background: #fcfcfd;
+      border-radius: 10px;
+      font-style: italic;
+      color: #5b6d74;
+    }
+
+    .mini-list {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .mini-list span {
+      background: white;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+
+    section { margin-top: 30px; }
+
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .card h3 { margin-top: 0; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      background: white;
+      border-left: 3px solid var(--accent);
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(36, 52, 61, 0.04);
+    }
+
+    .event-card,
+    .testimonial-card,
+    .contact-card {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(36, 52, 61, 0.04);
+      border: 1px solid var(--border);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .contact-links a {
+      background: #eef7fb;
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .resource-list {
+      padding-left: 18px;
+      margin: 8px 0 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #5b6b76;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero, .grid, .stats, .topics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">MedMind</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#topics">Topics</a>
+        <a href="#support">Support</a>
+        <a href="#contact">Contact</a>
+        <a href="#resources">Resources</a>
+        <a href="#events">Events</a>
+        <a href="#dailylifes">Daily Life</a>
+        <a href="#testimonials">Testimonials</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <div class="pill">Compassion • Courage • Care</div>
+        <h1>Where empathy meets science and service.</h1>
+        <p>MedMind learners grow every day into confident caregivers, turning knowledge into kindness and skill into healing.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#support">Explore Their Journey</a>
+          <a class="btn btn-secondary" href="#about">Learn More</a>
+        </div>
+        <div class="quote-box">“Every patient deserves calm hands, a caring heart, and a hopeful voice.”</div>
+      </div>
+      <div class="hero-card hero-visual">
+        <div class="icon">🩺</div>
+        <h3>Healing with purpose</h3>
+        <p>From classroom lessons to clinical care, MedMind learners build confidence, compassion, and courage every day.</p>
+        <div class="mini-list">
+          <span>Study</span>
+          <span>Practice</span>
+          <span>Serve</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">What makes MedMind learners special?</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Compassion</h3>
+          <p>They bring kindness and patience to every patient interaction, especially during difficult moments.</p>
+        </div>
+        <div class="card">
+          <h3>Knowledge</h3>
+          <p>They study anatomy, patient care, medicine, and ethics to build a strong foundation for safe practice.</p>
+        </div>
+        <div class="card">
+          <h3>Resilience</h3>
+          <p>They keep going through long hours, exams, and clinical duties with determination and purpose.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <h2 class="section-title">A day in the life</h2>
+      <div class="stats">
+        <div class="stat">
+          <strong>Early Study</strong>
+          <p>Reviewing notes, practicing skills, and preparing for exams.</p>
+        </div>
+        <div class="stat">
+          <strong>Clinical Training</strong>
+          <p>Applying theory in hospitals, clinics, and real patient care settings.</p>
+        </div>
+        <div class="stat">
+          <strong>Community Service</strong>
+          <p>Helping families, teaching health awareness, and supporting public wellness.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <h2 class="section-title">Different MedMind topics</h2>
+      <div class="topics-grid">
+        <div class="card">
+          <h3>Fundamentals of Nursing</h3>
+          <p>Focuses on basic patient care, hygiene, comfort, and safety practices.</p>
+        </div>
+        <div class="card">
+          <h3>Medical-Surgical Nursing</h3>
+          <p>Deals with caring for adults with acute and chronic illnesses in hospitals.</p>
+        </div>
+        <div class="card">
+          <h3>Pediatric Nursing</h3>
+          <p>Specializes in caring for infants, children, and adolescents.</p>
+        </div>
+        <div class="card">
+          <h3>Maternity and Women’s Health</h3>
+          <p>Supports women during pregnancy, childbirth, and reproductive health care.</p>
+        </div>
+        <div class="card">
+          <h3>Community Health Nursing</h3>
+          <p>Promotes wellness and prevents disease in families and communities.</p>
+        </div>
+        <div class="card">
+          <h3>Psychiatric Nursing</h3>
+          <p>Helps patients with mental health needs and emotional well-being.</p>
+        </div>
+        <div class="card">
+          <h3>Biochemistry</h3>
+          <p>Studies body chemistry, nutrients, and how health conditions affect the body.</p>
+        </div>
+        <div class="card">
+          <h3>Anatomy and Physiology</h3>
+          <p>Explains the structure and function of the human body to guide nursing care.</p>
+        </div>
+        <div class="card">
+          <h3>Pharmacology</h3>
+          <p>Teaches how medicines work, their effects, and safe drug administration.</p>
+        </div>
+        <div class="card">
+          <h3>Emergency Nursing</h3>
+          <p>Provides quick, skilled care to patients in urgent and life-threatening situations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <h2 class="section-title">Support for MedMind learners</h2>
+      <div class="card">
+        <p>Great MedMind learners thrive with teamwork, mentorship, and encouragement. A strong support system helps them succeed in school and in caring for others.</p>
+        <ul>
+          <li>Stay organized with a study plan.</li>
+          <li>Practice skills regularly and ask for feedback.</li>
+          <li>Support one another and celebrate progress.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Get in touch</h2>
+      <div class="contact-card">
+        <p>Reach out for study tips, encouragement, or guidance from the MedMind community.</p>
+        <div class="contact-links">
+          <a href="mailto:medmind@example.com">Email Us</a>
+          <a href="#resources">View Resources</a>
+          <a href="#events">Join an Event</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2 class="section-title">Helpful resources</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Study Guides</h3>
+          <ul class="resource-list">
+            <li>Practice questions</li>
+            <li>Concept maps</li>
+            <li>Quick revision notes</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Clinical Tips</h3>
+          <ul class="resource-list">
+            <li>Patient communication</li>
+            <li>Safety checks</li>
+            <li>Time management</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Wellness Support</h3>
+          <ul class="resource-list">
+            <li>Stress relief ideas</li>
+            <li>Healthy routines</li>
+            <li>Mindful study habits</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <h2 class="section-title">Upcoming events</h2>
+      <div class="topics-grid">
+        <div class="event-card">
+          <strong>Peer Study Circle</strong>
+          <p>Every Thursday at 6:00 PM for shared revision and motivation.</p>
+        </div>
+        <div class="event-card">
+          <strong>Clinical Skills Workshop</strong>
+          <p>Join a hands-on session to sharpen practical nursing skills.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="dailylifes">
+      <h2 class="section-title">A glimpse into daily life</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Morning</h3>
+          <p>Reviewing notes, getting ready for class, and setting goals for the day.</p>
+        </div>
+        <div class="card">
+          <h3>Afternoon</h3>
+          <p>Attending lectures, practicing care techniques, and learning from mentors.</p>
+        </div>
+        <div class="card">
+          <h3>Evening</h3>
+          <p>Resting, reflecting, and preparing for the next challenge with confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2 class="section-title">Stories from MedMind learners</h2>
+      <div class="topics-grid">
+        <div class="testimonial-card">
+          <p>“This journey is hard, but every small step makes me stronger.”</p>
+        </div>
+        <div class="testimonial-card">
+          <p>“Helping others gives me purpose and keeps me motivated each day.”</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created with care for MedMind learners everywhere.</p>
+  </footer>
+</body>
+</html>
